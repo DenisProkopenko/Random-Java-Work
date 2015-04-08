@@ -6,55 +6,62 @@ public class Sorting
 {
     public static void main(String[] args)
     {
-        double tStart;
+        long tStart;
+        long tEnd;
         
         int[] list1 = new int[10];
         Accending(1,list1);
         print(list1);
-        tStart = System.currentTimeMillis();
+        tStart = System.currentTimeMillis();//time start
         BubbleSort(list1);
+        tEnd = System.currentTimeMillis();//time end
         print(list1);
         System.out.println("Array of 10 Accending "+
-                (System.currentTimeMillis()-tStart)/1000+" Seconds");
+                (tEnd-tStart)+" Milli Seconds");
         
         int[] list2 = new int[10];
         Decending(10,list2);
         print(list2);
-        tStart = System.currentTimeMillis();
+        tStart = System.currentTimeMillis();//time start
         BubbleSort(list2);
+        tEnd = System.currentTimeMillis();//time end
         print(list2);
         System.out.println("Array of 10 Decending "+
-                (System.currentTimeMillis()-tStart)/1000+" Seconds");
+                (tEnd-tStart)+"  MilliSeconds");
         
         int[] list3 = new int[10];
         Randomized(1,10,list3);
         print(list3);
-        tStart = System.currentTimeMillis();
+        tStart = System.currentTimeMillis();//time start 
         BubbleSort(list3);
+        tEnd = System.currentTimeMillis();//time end
         print(list3);
         System.out.println("Array of 10 Randomized "+
-                (System.currentTimeMillis()-tStart)/1000+" Seconds");
+                (tEnd-tStart)+" Milli Seconds");
         
         int[] list4 = new int[50000];
         Accending(1,list4);
-        tStart = System.currentTimeMillis();
+        tStart = System.currentTimeMillis();//time start
         BubbleSort(list4);
+        tEnd = System.currentTimeMillis();//time end
         System.out.println("Array of 50000 Accending "+
-                (System.currentTimeMillis()-tStart)/1000+" Seconds");
+                (tEnd-tStart)+" Milli Seconds");
         
         int[] list5 = new int[50000];
         Decending(50000,list5);
-        tStart = System.currentTimeMillis();
+        tStart = System.currentTimeMillis();//time start
         BubbleSort(list5);
+        tEnd = System.currentTimeMillis();//time end
         System.out.println("Array of 50000 Decending "+
-                (System.currentTimeMillis()-tStart)/1000+" Seconds");
+                (tEnd-tStart)+" Milli Seconds");
         
         int[] list6 = new int[50000];
         Randomized(1,50000,list6);
-        tStart = System.currentTimeMillis();
+        tStart = System.currentTimeMillis();//time start
         BubbleSort(list6);
+        tEnd = System.currentTimeMillis();//time end
         System.out.println("Array of 50000 Randomized "+
-                (System.currentTimeMillis()-tStart)/1000+" Milli Seconds");
+                (tEnd-tStart)+" Milli Seconds");
         
     }//end main
     
@@ -103,7 +110,7 @@ public class Sorting
         while ((sorted == false) && (pass < n))
         {
             sorted = true;
-            for (int i = 0 ; i <= n - (pass + 1) ; i++)
+            for (int i = 0 ; i <= n - pass - 1 ; i++)
             {
                 if (list[i] > list[i + 1])
                 {
@@ -130,14 +137,14 @@ public class Sorting
 /*
 1 2 3 4 5 6 7 8 9 10 
 1 2 3 4 5 6 7 8 9 10 
-Array of 10 Accending 0.0 Seconds
+Array of 10 Accending 0 Milli Seconds
 10 9 8 7 6 5 4 3 2 1 
 1 2 3 4 5 6 7 8 9 10 
-Array of 10 Decending 0.0 Seconds
-4 7 1 3 3 4 6 8 5 4 
-1 3 3 4 4 4 5 6 7 8 
-Array of 10 Randomized 0.0 Seconds
-Array of 50000 Accending 0.0 Seconds
-Array of 50000 Decending 4.898 Seconds
-Array of 50000 Randomized 7.816 Milli Seconds
+Array of 10 Decending 0  MilliSeconds
+1 7 2 2 10 6 5 2 2 3 
+1 2 2 2 2 3 5 6 7 10 
+Array of 10 Randomized 0 Milli Seconds
+Array of 50000 Accending 0 Milli Seconds
+Array of 50000 Decending 4900 Milli Seconds
+Array of 50000 Randomized 7880 Milli Seconds
 */
