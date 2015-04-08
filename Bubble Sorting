@@ -1,0 +1,143 @@
+/*
+Denis Prokopenko
+ */
+package sorting;
+public class Sorting
+{
+    public static void main(String[] args)
+    {
+        double tStart;
+        
+        int[] list1 = new int[10];
+        Accending(1,list1);
+        print(list1);
+        tStart = System.currentTimeMillis();
+        BubbleSort(list1);
+        print(list1);
+        System.out.println("Array of 10 Accending "+
+                (System.currentTimeMillis()-tStart)/1000+" Seconds");
+        
+        int[] list2 = new int[10];
+        Decending(10,list2);
+        print(list2);
+        tStart = System.currentTimeMillis();
+        BubbleSort(list2);
+        print(list2);
+        System.out.println("Array of 10 Decending "+
+                (System.currentTimeMillis()-tStart)/1000+" Seconds");
+        
+        int[] list3 = new int[10];
+        Randomized(1,10,list3);
+        print(list3);
+        tStart = System.currentTimeMillis();
+        BubbleSort(list3);
+        print(list3);
+        System.out.println("Array of 10 Randomized "+
+                (System.currentTimeMillis()-tStart)/1000+" Seconds");
+        
+        int[] list4 = new int[50000];
+        Accending(1,list4);
+        tStart = System.currentTimeMillis();
+        BubbleSort(list4);
+        System.out.println("Array of 50000 Accending "+
+                (System.currentTimeMillis()-tStart)/1000+" Seconds");
+        
+        int[] list5 = new int[50000];
+        Decending(50000,list5);
+        tStart = System.currentTimeMillis();
+        BubbleSort(list5);
+        System.out.println("Array of 50000 Decending "+
+                (System.currentTimeMillis()-tStart)/1000+" Seconds");
+        
+        int[] list6 = new int[50000];
+        Randomized(1,50000,list6);
+        tStart = System.currentTimeMillis();
+        BubbleSort(list6);
+        System.out.println("Array of 50000 Randomized "+
+                (System.currentTimeMillis()-tStart)/1000+" Milli Seconds");
+        
+    }//end main
+    
+    //fill in the array with numbers Accending
+    public static int[] Accending(int start,int[] list)
+    {
+        for (int i = 0 ; i < list.length ; i++)
+        {
+            list[i] = start;
+            start += 1;
+        }//end for loop
+        return list;
+    }//end Accending()
+    
+    //fill in the array with numbers Decending
+    public static int[] Decending(int start,int[] list)
+    {
+        for (int i = 0 ; i < list.length ; i++)
+        {
+            list[i] = start;
+            start -= 1;            
+        }//end for loop
+        return list;
+    }//end Decending()
+    
+    //fill in the array with Randomized numbers
+    public static int[] Randomized(int min, int max, int[] list)
+    {
+        for (int i = 0 ; i < list.length ; i++)
+        {
+            int randomNum = min + (int)(Math.random()*max);
+            list[i] = randomNum;
+        }//end for loop
+        return list;
+    }//end Randomized()
+    
+    //sort the array in Accending with Bubble Sorting
+    public static void BubbleSort(int[] list)
+    {
+        boolean sorted = false;
+        int pass = 1;
+        int n;
+        int temp;
+
+        n = list.length;
+        while ((sorted == false) && (pass < n))
+        {
+            sorted = true;
+            for (int i = 0 ; i <= n - (pass + 1) ; i++)
+            {
+                if (list[i] > list[i + 1])
+                {
+                    temp = list[i + 1];
+                    list[i + 1] = list[i];
+                    list[i] = temp;
+                    sorted = false;
+                }//end if
+            }//end for loop
+            pass += 1;
+         }//end while
+    }//end BubbleSort
+    
+    public static void print(int[] list)
+    {
+        for(int i=0; i<list.length; i++)
+            {
+            System.out.print(list[i] + " ");
+            }//end for loop
+        System.out.println();
+    }//end print function
+}//end Sorting Class
+
+/*
+1 2 3 4 5 6 7 8 9 10 
+1 2 3 4 5 6 7 8 9 10 
+Array of 10 Accending 0.0 Seconds
+10 9 8 7 6 5 4 3 2 1 
+1 2 3 4 5 6 7 8 9 10 
+Array of 10 Decending 0.0 Seconds
+4 7 1 3 3 4 6 8 5 4 
+1 3 3 4 4 4 5 6 7 8 
+Array of 10 Randomized 0.0 Seconds
+Array of 50000 Accending 0.0 Seconds
+Array of 50000 Decending 4.898 Seconds
+Array of 50000 Randomized 7.816 Milli Seconds
+*/
